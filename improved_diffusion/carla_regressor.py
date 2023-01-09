@@ -12,7 +12,7 @@ from torch.optim import lr_scheduler
 import copy
 import wandb
 
-from improved_diffusion.script_util import str2bool
+from fvd.script_util import str2bool
 
 import multiprocessing as mp
 from functools import partial

@@ -6,9 +6,9 @@ import uuid
 import argparse
 import json
 
-from improved_diffusion.video_datasets import get_test_dataset
-from improved_diffusion.test_util import mark_as_observed, tensor2gif, tensor2mp4
-from improved_diffusion.script_util import str2bool
+from fvd.video_datasets import get_test_dataset
+from fvd.test_util import mark_as_observed, tensor2gif, tensor2mp4
+from fvd.script_util import str2bool
 
 
 if __name__ == "__main__":

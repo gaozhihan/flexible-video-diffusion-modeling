@@ -13,16 +13,16 @@ from PIL import Image
 import numpy as np
 import torch as th
 
-from improved_diffusion import dist_util
-from improved_diffusion.script_util import (
+from fvd import dist_util
+from fvd.script_util import (
     model_and_diffusion_defaults,
     create_model_and_diffusion,
     args_to_dict,
     str2bool,
 )
-from improved_diffusion.test_util import get_model_results_path, get_eval_run_identifier, Protect
-from improved_diffusion.sampling_schemes import sampling_schemes
-from improved_diffusion.video_datasets import get_test_dataset
+from fvd.test_util import get_model_results_path, get_eval_run_identifier, Protect
+from fvd.sampling_schemes import sampling_schemes
+from fvd.video_datasets import get_test_dataset
 
 
 @th.no_grad()

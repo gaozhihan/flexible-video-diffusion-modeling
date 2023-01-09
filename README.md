@@ -72,13 +72,13 @@ Checkpoints are saved throughout training to paths of the form `checkpoints/<WAN
 ```
 python scripts/video_sample.py <CHECKPOINT PATH> --batch_size 2 --sampling_scheme <SAMPLING SCHEME> --stop_index <STOP INDEX> --n_obs <N OBS>
 ```
-which will sample completions for the first <STOP INDEX> test videos, each conditioned on the first <N OBS> frames (where <N OBS> may be zero). The dataset to use and other hyperparameters are inferred from the specified checkpoint. The <SAMPLING SCHEME> should be one of those defined in `improved_diffusion/sampling_schemes.py`, most of which are described in [our preprint](https://arxiv.org/abs/2205.11495). Options include, "autoreg", "long-range", "hierarchy-2", "adaptive-autoreg", "adaptive-hierarchy-2". The final command will look something like:
+which will sample completions for the first <STOP INDEX> test videos, each conditioned on the first <N OBS> frames (where <N OBS> may be zero). The dataset to use and other hyperparameters are inferred from the specified checkpoint. The <SAMPLING SCHEME> should be one of those defined in `fvd/sampling_schemes.py`, most of which are described in [our preprint](https://arxiv.org/abs/2205.11495). Options include, "autoreg", "long-range", "hierarchy-2", "adaptive-autoreg", "adaptive-hierarchy-2". The final command will look something like:
 ```
 python scripts/video_sample.py checkpoints/2f1gq6ud/ema_0.9999_550000.pt --batch_size 2 --sampling_scheme autoreg --stop_index 100
 ```
 
 ### Experimenting with different sampling schemes
-Our sampling schemes are defined in `improved_diffusion/sampling_schemes.py`, including all those presented in [our preprint](https://arxiv.org/abs/2205.11495). To add a new one, create a new subclass of `SamplingSchemeBase` with a `next_indices` function (returning a pair of vectors of observed and latent indices) in this file. Add it to the `sampling_schemes` dictionary (also in the same file) to allow your sampling scheme to be accessed by `scripts/video_sample.py`.
+Our sampling schemes are defined in `fvd/sampling_schemes.py`, including all those presented in [our preprint](https://arxiv.org/abs/2205.11495). To add a new one, create a new subclass of `SamplingSchemeBase` with a `next_indices` function (returning a pair of vectors of observed and latent indices) in this file. Add it to the `sampling_schemes` dictionary (also in the same file) to allow your sampling scheme to be accessed by `scripts/video_sample.py`.
   
 For debugging, you can visualise the indices used by a sampling scheme with 
 ```

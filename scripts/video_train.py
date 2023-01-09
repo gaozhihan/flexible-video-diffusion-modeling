@@ -8,17 +8,17 @@ import argparse
 import wandb
 import torch.distributed as dist
 
-from improved_diffusion import dist_util
-from improved_diffusion.video_datasets import load_data, default_T_dict, default_image_size_dict
-from improved_diffusion.resample import create_named_schedule_sampler
-from improved_diffusion.script_util import (
+from fvd import dist_util
+from fvd.video_datasets import load_data, default_T_dict, default_image_size_dict
+from fvd.resample import create_named_schedule_sampler
+from fvd.script_util import (
     model_and_diffusion_defaults,
     create_model_and_diffusion,
     args_to_dict,
     add_dict_to_argparser,
 )
-from improved_diffusion.train_util import TrainLoop
-from improved_diffusion.logger import logger
+from fvd.train_util import TrainLoop
+from fvd.logger import logger
 
 os.environ["MY_WANDB_DIR"] = "none"
 if "--unobserve" in sys.argv:

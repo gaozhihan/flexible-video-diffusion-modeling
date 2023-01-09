@@ -4,8 +4,8 @@ import random
 import numpy as np
 import torch as th
 
-from improved_diffusion.carla_regressor import load_classifier_regressor_like_paper, predict_coords, base_data_transform
-from improved_diffusion.test_util import Protect, get_model_results_path, get_eval_run_identifier
+from fvd.carla_regressor import load_classifier_regressor_like_paper, predict_coords, base_data_transform
+from fvd.test_util import Protect, get_model_results_path, get_eval_run_identifier
 
 
 if __name__ == "__main__":

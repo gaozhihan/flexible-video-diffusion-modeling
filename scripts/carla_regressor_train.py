@@ -1,3 +1,3 @@
-from improved_diffusion.carla_regressor import train
+from fvd.carla_regressor import train
 
 train()

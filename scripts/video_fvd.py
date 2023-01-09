@@ -8,9 +8,9 @@ from collections import defaultdict
 import tensorflow.compat.v1 as tf
 
 # Metrics
-from improved_diffusion.video_datasets import get_test_dataset
-import improved_diffusion.frechet_video_distance as fvd
-from improved_diffusion import test_util
+from fvd.video_datasets import get_test_dataset
+import fvd.frechet_video_distance as fvd
+from fvd import test_util
 
 tf.disable_eager_execution() # Required for our FVD computation code
 
