@@ -426,7 +426,8 @@ class UNetVideoModel(nn.Module):
         return next(self.input_blocks.parameters()).dtype
 
     def forward(self, x, *, x0, timesteps, frame_indices=None,
-                obs_mask=None, latent_mask=None, return_attn_weights=False
+                obs_mask=None, latent_mask=None, return_attn_weights=False,
+                verbose=False
             ):
         """
         Apply the model to an input batch.
@@ -436,6 +437,17 @@ class UNetVideoModel(nn.Module):
         :param y: an [N] Tensor of labels, if class-conditional.
         :return: an [N x C x ...] Tensor of outputs.
         """
+        if verbose:
+            print(f"x.shape = {x.shape}")
+            print(f"x.min = {x.min()}")
+            print(f"x.max = {x.max()}")
+            print(f"x0.shape = {x0.shape}")
+            print(f"x0.min = {x0.min()}")
+            print(f"x0.max = {x0.max()}")
+            if obs_mask is not None:
+                print(f"obs_mask.shape = {obs_mask.shape}")
+            if latent_mask is not None:
+                print(f"latent_mask.shape = {latent_mask.shape}")
         B, T, C, H, W = x.shape
         timesteps = timesteps.view(B, 1).expand(B, T)
         attn_mask = (obs_mask + latent_mask).clip(max=1)
